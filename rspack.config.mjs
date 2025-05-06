@@ -14,7 +14,7 @@ if (!isRunningRspack && !isRunningWebpack) {
  */
 const config = {
   mode: "development",
-  devtool: false,
+  devtool: "source-map",
   entry: {
     main: "./src/index",
   },
@@ -28,6 +28,15 @@ const config = {
   },
   experiments: {
     css: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ["builtin:lightningcss-loader", "sass-loader"],
+        type: "css/auto",
+      },
+    ],
   },
 };
 
